@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Ngày Hôm Nay Là</title>
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var day = now.getDate();
+            var month = now.getMonth() + 1; // Tháng bắt đầu từ 0
+            var year = now.getFullYear();
+
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            var timeString = hours + ":" + minutes + ":" + seconds;
+            document.getElementById("clock").innerHTML = timeString;
+
+            // Cập nhật ngày
+            var dateString = `Hôm nay là ngày ${day}/${month}/${year}`;
+            document.getElementById("dateDisplay").innerHTML = dateString;
+
+            // Cập nhật tiêu đề
+            document.title = `Key Ngày ${day}/${month}/${year} Là`;
+
+            setTimeout(updateTime, 1000);
+        }
+
+        function getQueryParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const key = urlParams.get('ma');
+            const keyInput = document.getElementById('keyInput');
+            if (key) {
+                keyInput.value = key;
+            } else {
+                keyInput.value = 'mfs-vip-pro';
+            }
+        }
+
+        function copyToClipboard() {
+            const keyInput = document.getElementById('keyInput');
+            keyInput.select();
+            document.execCommand('copy');
+            alert('Key copied to clipboard: ' + keyInput.value);
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicButton = document.getElementById('musicButton');
+
+            if (music.paused) {
+                music.play();
+                musicButton.textContent = 'Pause Music';
+            } else {
+                music.pause();
+                musicButton.textContent = 'Play Music';
+            }
+        }
+
+        window.onload = function () {
+            updateTime();
+            getQueryParam();
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f5f3;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .loading-container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ef8682;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            animation: pulse 1.5s infinite;
+            width: 80vw;
+            max-width: 400px;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                border-color: #ef8682;
+            }
+            50% {
+                border-color: #e9514d;
+            }
+        }
+        h1 {
+            color: #03fcec;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .key-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            text-align: center;
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #fc0303;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input:hover, input:focus {
+            border-color: #e9514d;
+        }
+        button {
+            background-color: #ef8682;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #e9514d;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bật nhạc nền -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="loading-container">
+        <h1>Key Ngày Là</h1>
+        <div class="key-container">
+            <input type="text" id="keyInput" readonly>
+            <button onclick="copyToClipboard()">Copy Key</button>
+            <button id="musicButton" onclick="toggleMusic()">Play Music</button>
+        </div>
+        <div id="dateDisplay" style="margin-top: 10px; font-size: 18px; color: #555;"></div>
+        <div class="footer">
+            <b>Copyright By 
+                <a href="https://webminhfansub.github.io/Xacminhkey" class="admin-link">Xác Minh key</a> | 
+                Time: <span id="clock"></span>
+            </b>
+        </div>
+    </div>
+</body>
+</html>
