@@ -165,3 +165,47 @@
     </div>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bong bóng chat Messenger</title>
+  <style>
+    /* Bong bóng chat */
+    .messenger-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #0084FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.2s;
+    }
+
+    .messenger-bubble:hover {
+      transform: scale(1.1);
+    }
+
+    .messenger-bubble img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Bong bóng Messenger -->
+  <a href="https://m.me/minh.fansub" target="_blank" class="messenger-bubble">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Facebook_Messenger_logo_2020.svg/768px-Facebook_Messenger_logo_2020.svg.png" alt="Messenger">
+  </a>
+
+</body>
+</html>
+
